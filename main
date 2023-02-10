@@ -1,0 +1,39 @@
+import pyttsx3
+import datetime
+import webbrowser as wb
+
+
+
+friday = pyttsx3.init()
+voice = friday.getProperty('voices')
+friday.setProperty('voice',voice[1].id)
+
+def speak(audio):
+    print('F.R.I.D.A.Y: ' + audio)
+    friday.say(audio)
+    friday.runAndWait()
+
+def time():
+    Time =datetime.datetime.now().strftime('%I:%M:%p')
+    speak(Time)
+
+def hello():
+    hour = datetime.datetime.now().hour
+    if hour >= 6 and hour <12:
+        speak('Good morning')
+    elif hour >= 12 and hour <18:
+        speak('Good afternoon dude')
+    elif hour >= 18 and hour <24:
+        speak('Good evening')
+    speak('How can I help you?')
+
+
+if __name__ == "__main__":
+    hello()
+    
+
+# speak("Hello")
+# time()
+# hello()
+# hour = datetime.datetime.now().hour
+# print(hour)
